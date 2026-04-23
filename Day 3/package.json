@@ -1,0 +1,19 @@
+{
+  "name": "day-3",
+  "version": "1.0.0",
+  "description": "\"my first react app using vite\"",
+  "license": "ISC",
+  "author": "raghavdolyar",
+  "type": "commonjs",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5"
+  },
+  "devDependencies": {
+    "vite": "^8.0.10"
+  }
+}
