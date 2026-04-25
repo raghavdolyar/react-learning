@@ -1,0 +1,45 @@
+.box {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.box label {
+    color: #c9d1d9;
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+}
+
+.box input {
+    width: 100%;
+    background-color: #0d1117;
+    border: 1px solid #30363d;
+    color: #e6edf3;
+    padding: 12px 14px;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.box input::placeholder {
+    color: #6e7681;
+}
+
+.box input:focus {
+    border-color: #58a6ff;
+}
+
+.error {
+    padding-left: 6px;
+    min-height: 18px;
+    font-size: 0.88rem;
+    color: #f85149;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.error.show {
+    opacity: 1;
+}
