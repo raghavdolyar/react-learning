@@ -25,14 +25,19 @@ export default function InputBox({
         </label>
         <input
           className="outline-none w-full bg-transparent py-1.5"
-          type="number"
-          min="0"
+          type="text"
           placeholder="Amount"
           disabled={amountDisable}
           id={amountInputId}
           value={amount}
           onChange={(event) =>
-            onAmountChange && onAmountChange(Number(event.target.value))
+            onAmountChange &&
+            onAmountChange(
+              typeof event.target.value === 'string' &&
+                event.target.value.trim() === ''
+                ? NaN
+                : event.target.value,
+            )
           }
         />
       </div>

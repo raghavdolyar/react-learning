@@ -11,7 +11,9 @@ export default function CustomSelect({
 
   useEffect(() => {
     const handler = (event) => {
-      if (ref.current && !ref.current.contains(event.target)) setIsOpen(false);
+      if (ref.current && !ref.current.contains(event.target)) {
+        setIsOpen(false);
+      }
     };
     document.addEventListener('mousedown', handler);
     return () => document.removeEventListener('mousedown', handler);
@@ -23,7 +25,8 @@ export default function CustomSelect({
         type="button"
         disabled={currencyDisable}
         onClick={() => setIsOpen((prev) => !prev)}
-        className="flex items-center gap-2 px-3 py-1.5 bg-white border border-gray-200 rounded-xl text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 hover:border-gray-300 transition-all duration-150 disabled:opacity-40 disabled:cursor-not-allowed"
+        className="flex items-center gap-2 px-3 py-1.5 bg-white border border-gray-200 rounded-xl text-sm font-medium text-gray-700 shadow-sm
+        hover:bg-gray-50 hover:border-gray-300 transition-all duration-150 disabled:opacity-40 disabled:cursor-not-allowed"
       >
         {currency}
         <span
@@ -34,7 +37,10 @@ export default function CustomSelect({
       </button>
 
       {isOpen && (
-        <ul className="absolute z-50 mt-2 left-0 min-w-full bg-white border border-gray-100 rounded-xl shadow-lg overflow-hidden max-h-44 overflow-y-auto">
+        <ul
+          className="absolute z-50 mt-2 left-0 min-w-full bg-white border border-gray-100 rounded-xl shadow-lg overflow-hidden max-h-44
+        overflow-y-auto"
+        >
           {currencyOptions.map((option) => (
             <li
               key={option}

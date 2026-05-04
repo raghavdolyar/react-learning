@@ -1,10 +1,10 @@
 import InputBox from './components/InputBox';
 import useCurrencyInfo from './hooks/useCurrencyInfo';
-import { useState } from 'react';
+import { useState, useRef, useLayoutEffect } from 'react';
 
 export default function App() {
   const [from, setFrom] = useState('usd');
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState(1);
   const [to, setTo] = useState('inr');
   const [convertedAmount, setConvertedAmount] = useState(0);
 
@@ -21,6 +21,15 @@ export default function App() {
   const convert = () => {
     setConvertedAmount(amount * currencyInfo[to]);
   };
+
+  const initialLoad = useRef(true);
+
+  useLayoutEffect(() => {
+    if (currencyInfo[to] && initialLoad.current) {
+      initialLoad.current = false;
+      setConvertedAmount(amount * currencyInfo[to]);
+    }
+  }, [currencyInfo, amount, to]);
 
   let backgroundImage =
     'https://images.pexels.com/photos/3532540/pexels-photo-3532540.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2';
@@ -43,7 +52,7 @@ export default function App() {
             <div className="w-full mb-1">
               <InputBox
                 label="From"
-                amount={amount}
+                amount={isNaN(amount) ? '' : amount}
                 onAmountChange={(amount) => setAmount(amount)}
                 currency={from}
                 onCurrencyChange={(currency) => setFrom(currency)}
@@ -62,7 +71,7 @@ export default function App() {
             <div className="w-full mt-1 mb-4">
               <InputBox
                 label="To"
-                amount={convertedAmount}
+                amount={isNaN(convertedAmount) ? '' : convertedAmount}
                 onAmountChange={(amount) => setConvertedAmount(amount)}
                 currency={to}
                 onCurrencyChange={(currency) => setTo(currency)}
