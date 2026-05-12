@@ -1,10 +1,10 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import {
-	createBrowserRouter,
-	createRoutesFromElements,
-	Route,
-	RouterProvider,
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+  RouterProvider,
 } from 'react-router';
 import Layout from './Layout';
 import Home from './components/home/Home';
@@ -39,23 +39,23 @@ import './index.css';
 */
 
 const router = createBrowserRouter(
-	createRoutesFromElements(
-		<Route path='/' element={<Layout />}>
-			<Route path='' element={<Home />} />
-			<Route path='about' element={<About />} />
-			<Route path='contact' element={<Contact />} />
-			<Route path='user/:userid' element={<User />} />
-			<Route
-				loader={githubInfoLoader}
-				path='github'
-				element={<Github />}
-			/>
-		</Route>,
-	),
+  createRoutesFromElements(
+    <Route path='/' element={<Layout />}>
+      <Route path='' element={<Home />} />
+      <Route path='about' element={<About />} />
+      <Route path='contact' element={<Contact />} />
+      <Route path='user/:userid' element={<User />} />
+      <Route
+        loader={githubInfoLoader}
+        path='github/:username'
+        element={<Github />}
+      />
+    </Route>,
+  ),
 );
 
 createRoot(document.getElementById('root')).render(
-	<StrictMode>
-		<RouterProvider router={router} />
-	</StrictMode>,
+  <StrictMode>
+    <RouterProvider router={router} />
+  </StrictMode>,
 );
