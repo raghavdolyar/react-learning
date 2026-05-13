@@ -10,7 +10,10 @@ export default function Login() {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     setUser({ username, password });
-    evt.reset();
+    setUsername('');
+    setPassword('');
+    console.log(username);
+    console.log(password);
   };
 
   return (
@@ -18,7 +21,7 @@ export default function Login() {
       <h2>Login</h2>
       <input
         type='text'
-        // value={username}
+        value={username}
         onChange={(evt) => setUsername(evt.target.value)}
         placeholder='Enter your username'
       />
